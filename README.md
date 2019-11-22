@@ -61,7 +61,10 @@ Pour aller plus loin : [la documentation officielle](https://www.jetbrains.com/h
 
 Pour l'instant, seule l'API de Discord est utilisée, mais d'autres pourront servir à terme.
 
-- [API Discord]()
+- [API Discord](https://discordapp.com/developers/docs/intro)
+
+Les clés des API et autres variables sensibles sont conservées dans `config.properties` ;
+aucun code ou clé d'identification ne doit apparaître en clair dans le projet.
 
 ## Conventions
 
