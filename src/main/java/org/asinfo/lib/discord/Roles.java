@@ -2,6 +2,7 @@ package org.asinfo.lib.discord;
 
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.guild.GenericGuildEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.managers.GuildManager;
@@ -59,5 +60,27 @@ public class Roles {
         if (event.getMember() != null) {
             manager.getGuild().removeRoleFromMember(event.getMember(), role).queue();
         }
+    }
+
+    public static boolean roleExiste(GuildMessageReceivedEvent event, String role){
+        int index = event.getGuild().getRoles().size();
+        for (int i = 0; i < index; i++) {
+            if (event.getGuild().getRoles().get(i).getName().equals(role)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static User[] membresDe(GuildMessageReceivedEvent event, String role){
+        if (!roleExiste(event, role)) return null;
+        Role r = getRoleAvecNom(event, role);
+        int index = event.getGuild().getMembersWithRoles(r).size();
+        if (index == 0) return null;
+        User[] users = new User[index];
+        for (int i = 0 ; i < index ; i++){
+            users[i] = event.getGuild().getMembersWithRoles(r).get(i).getUser();
+        }
+        return users;
     }
 }
