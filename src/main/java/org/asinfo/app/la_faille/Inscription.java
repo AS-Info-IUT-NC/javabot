@@ -1,43 +1,29 @@
 package org.asinfo.app.la_faille;
 
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.managers.GuildManager;
+import org.jetbrains.annotations.NotNull;
+
+import static org.asinfo.lib.discord.Messages.messageValide;
+import static org.asinfo.lib.discord.Roles.*;
 
 public class Inscription extends ListenerAdapter {
 
+    /* Todo completer
+    Message de départ
+    Message d'arrivée
+     */
     @Override
-    public void onGuildMessageReceived(GuildMessageReceivedEvent event){
-        if (event.getMessage().getContentRaw().equals("!jfaille")) {
-            int index = event.getGuild().getRoles().size();
-            Role[] roles = new Role[index];
-            int aoeIndex = -1;
-            for (int i = 0; i < index; i++) {
-                roles[i] = event.getGuild().getRoles().get(i);
-                if (roles[i].getName().equals("La Faille")) {
-                    aoeIndex = i;
-                    i = index;
-                }
-            }
-            GuildManager manager = event.getGuild().getManager();
-            if (event.getMember() != null) {
-                manager.getGuild().addRoleToMember(event.getMember(), roles[aoeIndex]).queue();
-            }
-        } else if (event.getMessage().getContentRaw().equals("!qfaille")){
-            int index = event.getGuild().getRoles().size();
-            Role[] roles = new Role[index];
-            int aoeIndex = -1;
-            for (int i = 0; i < index; i++) {
-                roles[i] = event.getGuild().getRoles().get(i);
-                if (roles[i].getName().equals("La Faille")) {
-                    aoeIndex = i;
-                    i = index;
-                }
-            }
-            GuildManager manager = event.getGuild().getManager();
-            if (event.getMember() != null) {
-                manager.getGuild().removeRoleFromMember(event.getMember(), roles[aoeIndex]).queue();
+    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
+        if (messageValide(event, "!fjoin", "!fquit")) {
+            Member membre = event.getMember();
+            Role role = getRoleAvecNom(event, "La Faille");
+            if (messageValide(event, "!faille")) {
+                ajouterRoleA(event, membre, role);
+            } else {
+                retirerRoleA(event, membre, role);
             }
         }
     }
