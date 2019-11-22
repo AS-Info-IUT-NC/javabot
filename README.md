@@ -9,7 +9,7 @@ Bot Discord. Serveur "DUT Info AS".
 > Documentation du projet : [**Javadoc**](http://labo.dvp-web.fr/javabot/index)
 
 
-![discord](img/discord.png)
+![discord](src/main/assets/img/discord.png)
 
 ### JDA
 
