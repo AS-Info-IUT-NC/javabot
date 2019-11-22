@@ -82,7 +82,7 @@ Pour participer :
 - Consulter les [issues](https://github.com/B4va/javabot/issues) : Il est possible d'en créer ou de répondre aux issues déjà
 ouvertes, pour préciser un peu ce qui vous semblerait utile de modifier ou implémenter.
 - Les corrections/implémentations se feront alors via pull request, que chacun pourra
-consulter et commenter avant validation. Voir [ici]() le fonctionnement.
+consulter et commenter avant validation. Voir [ici](w) le fonctionnement.
 - Dans le cas d'une plus ou moins grosse implémentation, il est possible de créer un [projet](https://github.com/B4va/javabot/projects)
 afin de travailler à plusieurs et de pouvoir s'organiser plus efficacement.
 - Respecter les [conventions](https://github.com/B4va/javabot/wiki) de nommage et d'organisation du projet.
