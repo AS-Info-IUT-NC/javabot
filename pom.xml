@@ -27,6 +27,13 @@
       <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.jagrosh</groupId>
+      <artifactId>jda-utilities</artifactId>
+      <version>3.0.2</version>
+      <scope>compile</scope>
+      <type>pom</type>
+    </dependency>
   </dependencies>
 
   <repositories>

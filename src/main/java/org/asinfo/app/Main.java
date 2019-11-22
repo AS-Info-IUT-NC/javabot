@@ -2,6 +2,7 @@ package org.asinfo.app;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import org.asinfo.app.la_faille.LaFaille;
 import org.asinfo.app.ping_pong.PingPong;
 import static org.asinfo.lib.util.ConfigClient.getProp;
 
@@ -21,5 +22,6 @@ public class Main {
 
         // Montage des différents services :
         jda.addEventListener(new PingPong());
+        new LaFaille(jda);
     }
 }
