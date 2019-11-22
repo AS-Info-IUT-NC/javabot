@@ -1,5 +1,6 @@
 package org.asinfo.app.ping_pong;
 
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -7,6 +8,14 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
  * Programme de test.
  */
 public class PingPong extends ListenerAdapter {
+
+    /**
+     * Todo
+     * @param jda
+     */
+    public PingPong(JDA jda){
+        jda.addEventListener(this);
+    }
 
     /**
      * Réponse automatique au message "!ping".
