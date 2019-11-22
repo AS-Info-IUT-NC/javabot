@@ -14,9 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PingPongTest {
 
     @Test
+    void ConstrYest(){
+        // Todo
+    }
+
+    @Test
     void eventTest() throws IOException, LoginException {
         JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();
-        PingPong pingPong = new PingPong();
+        PingPong pingPong = new PingPong(jda);
         jda.addEventListener(pingPong);
         assertTrue(jda.getEventManager().getRegisteredListeners().contains(pingPong));
     }

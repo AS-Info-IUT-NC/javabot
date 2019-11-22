@@ -21,7 +21,7 @@ public class Main {
         JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();
 
         // Montage des différents services :
-        jda.addEventListener(new PingPong());
+        new PingPong(jda);
         new LaFaille(jda);
     }
 }
