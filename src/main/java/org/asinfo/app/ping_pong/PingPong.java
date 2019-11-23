@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 public class PingPong extends ListenerAdapter {
 
     /**
-     * Todo
+     * Todo javadoc
      * @param jda
      */
     public PingPong(JDA jda){

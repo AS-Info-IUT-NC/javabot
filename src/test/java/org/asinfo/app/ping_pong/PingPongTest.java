@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PingPongTest {
 
     @Test
-    void ConstrYest(){
-        // Todo
+    void ConstrTest(){
+        // Todo test
     }
 
     @Test
