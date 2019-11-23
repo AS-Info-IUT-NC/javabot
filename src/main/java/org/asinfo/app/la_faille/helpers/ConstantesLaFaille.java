@@ -1,19 +1,24 @@
 package org.asinfo.app.la_faille.helpers;
 
 /**
- * todo javadoc
- * The interface Commandes la faille.
+ * Constantes propres au package la_faille.
  */
 public interface ConstantesLaFaille {
 
     /**
-     * The constant JOIN.
+     * Commande d'inscription.
      */
     public final String JOIN = "!jfaille";
     /**
-     * The constant QUIT.
+     * Commande de désinscription.
      */
     public final String QUIT = "!qfaille";
+    /**
+     * Commande d'appel aux utilisateurs ayant le role 'La Faille'
+     */
     public final String CALL = "!lafaille";
+    /**
+     * Nom du role associé aux joueurs.
+     */
     public final String ROLE = "La Faille";
 }

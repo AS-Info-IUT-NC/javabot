@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 import static org.asinfo.lib.util.ConfigClient.getProp;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests unitaires de la classe {@link PingPong}.
@@ -14,15 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class PingPongTest {
 
     @Test
-    void ConstrTest(){
-        // Todo test
+    void ConstrTest() throws IOException, LoginException {
+        JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();
+        PingPong pingPong = new PingPong(jda);
+        assertFalse(jda.getEventManager().getRegisteredListeners().isEmpty());
     }
 
     @Test
     void eventTest() throws IOException, LoginException {
         JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();
         PingPong pingPong = new PingPong(jda);
-        jda.addEventListener(pingPong);
         assertTrue(jda.getEventManager().getRegisteredListeners().contains(pingPong));
     }
 }
