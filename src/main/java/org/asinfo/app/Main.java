@@ -4,7 +4,6 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import org.asinfo.app.la_faille.LaFaille;
 import org.asinfo.app.ping_pong.PingPong;
-import static org.asinfo.lib.util.ConfigClient.getProp;
 
 /**
  * Classe principale du programme.
@@ -18,7 +17,7 @@ public class Main {
      */
     public static void main( String[] args ) throws Exception {
         // Création de l'instance :
-        JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();
+        JDA jda = new JDABuilder(System.getenv("DISCORD_TOKEN")).build();
 
         // Montage des différents services :
         new PingPong(jda);

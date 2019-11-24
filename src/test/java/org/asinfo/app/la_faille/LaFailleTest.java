@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 
-import static org.asinfo.lib.util.ConfigClient.getProp;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
  * The type La faille test.
@@ -24,7 +23,7 @@ public class LaFailleTest {
      */
     @Test
     void ConstrTest() throws IOException, LoginException {
-        JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();
+        JDA jda = new JDABuilder(System.getenv("DISCORD_TOKEN")).build();
         LaFaille laFaille = new LaFaille(jda);
         assertFalse(jda.getEventManager().getRegisteredListeners().isEmpty());
     }

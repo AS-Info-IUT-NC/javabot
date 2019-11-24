@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import javax.security.auth.login.LoginException;
 import java.io.IOException;
 
-import static org.asinfo.lib.util.ConfigClient.getProp;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -24,7 +23,7 @@ public class InscriptionTest {
      */
     @Test
     void eventTest() throws IOException, LoginException {
-        JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();
+        JDA jda = new JDABuilder(System.getenv("DISCORD_TOKEN")).build();
         Inscription inscription = new Inscription();
         jda.addEventListener(inscription);
         assertTrue(jda.getEventManager().getRegisteredListeners().contains(inscription));
