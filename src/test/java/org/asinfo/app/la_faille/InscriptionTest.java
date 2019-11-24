@@ -10,8 +10,18 @@ import java.io.IOException;
 import static org.asinfo.lib.util.ConfigClient.getProp;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * todo javadoc
+ * The type Inscription test.
+ */
 public class InscriptionTest {
 
+    /**
+     * Event test.
+     *
+     * @throws IOException    the io exception
+     * @throws LoginException the login exception
+     */
     @Test
     void eventTest() throws IOException, LoginException {
         JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();

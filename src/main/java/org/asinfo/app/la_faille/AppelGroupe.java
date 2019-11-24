@@ -20,9 +20,11 @@ public class AppelGroupe extends ListenerAdapter implements ConstantesLaFaille {
      * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
      */
     public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
-        if (roleExiste(event, ROLE)) return;
-        if (messageContient(event, CALL)) return;
+        System.out.println(0);
+        if (!roleExiste(event, ROLE)) return;
+        if (!messageContient(event, CALL)) return;
         if (membresDe(event, ROLE) != null){
+            System.out.println(1);
             appelerLaFaille(event);
         } else {
             groupeVideLaFaille(event);

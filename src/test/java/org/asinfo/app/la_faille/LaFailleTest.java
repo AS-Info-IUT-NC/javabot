@@ -10,8 +10,18 @@ import java.io.IOException;
 import static org.asinfo.lib.util.ConfigClient.getProp;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type La faille test.
+ */
 public class LaFailleTest {
 
+    /**
+     * todo javadoc
+     * Constr test.
+     *
+     * @throws IOException    the io exception
+     * @throws LoginException the login exception
+     */
     @Test
     void ConstrTest() throws IOException, LoginException {
         JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();

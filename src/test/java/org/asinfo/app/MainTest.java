@@ -13,6 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 class MainTest {
 
+    /**
+     * todo javadoc
+     * Creation de l instance.
+     *
+     * @throws IOException    the io exception
+     * @throws LoginException the login exception
+     */
     @Test
     void creationDeLInstance() throws IOException, LoginException {
         JDA jda = new JDABuilder(getProp("DISCORD_TOKEN")).build();

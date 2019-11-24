@@ -11,6 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  */
 class ConfigClientTest {
 
+    /**
+     * todo javadoc
+     * Gets prop test.
+     *
+     * @throws IOException the io exception
+     */
     @Test
     void getPropTest() throws IOException {
         assertNull(getProp("FAIL"));

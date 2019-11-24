@@ -98,7 +98,7 @@ public class Roles {
      * @return Les utilisateurs ayant le role ciblé (User[])
      */
     public static User[] membresDe(GuildMessageReceivedEvent event, String role){
-        if (roleExiste(event, role)) return null;
+        if (!roleExiste(event, role)) return null;
         Role r = getRoleAvecNom(event, role);
         int index = event.getGuild().getMembersWithRoles(r).size();
         if (index == 0) return null;
