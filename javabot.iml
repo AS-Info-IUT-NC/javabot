@@ -10,24 +10,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-command:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-commons:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-doc:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-examples:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-menu:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-command:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-commons:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-doc:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-examples:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-menu:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-command:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20160810" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-commons:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-doc:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-examples:3.0.2" level="project" />
-    <orderEntry type="library" name="Maven: com.jagrosh:jda-utilities-menu:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: net.dv8tion:JDA:4.0.0_62" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:16.0.1" level="project" />

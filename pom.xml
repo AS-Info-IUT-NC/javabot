@@ -4,7 +4,7 @@
 
   <groupId>org.asinfo</groupId>
   <artifactId>javabot</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1</version>
 
   <name>javabot</name>
 
@@ -55,11 +55,15 @@
         <version>2.22.2</version>
       </plugin>
       <plugin>
+        <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
         <configuration>
           <archive>
             <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
               <mainClass>org.asinfo.app.Main</mainClass>
             </manifest>
           </archive>
@@ -67,4 +71,12 @@
       </plugin>
     </plugins>
   </build>
+
+  <distributionManagement>
+  <repository>
+    <id>github</id>
+    <name>Versions</name>
+    <url>https://maven.pkg.github.com/AS-Info-IUT-NC/javabot</url>
+  </repository>
+</distributionManagement>
 </project>
