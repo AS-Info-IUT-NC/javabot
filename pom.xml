@@ -4,7 +4,7 @@
 
   <groupId>org.asinfo</groupId>
   <artifactId>javabot</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.7_jar</version>
 
   <name>javabot</name>
 
@@ -75,7 +75,7 @@
         <executions>
           <execution>
             <id>copy-dependencies</id>
-            <phase>prepare-package</phase>
+            <phase>package</phase>
             <goals>
               <goal>copy-dependencies</goal>
             </goals>
@@ -83,6 +83,25 @@
               <outputDirectory>
                 ${project.build.directory}/libs
               </outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+          <execution>
+            <id>antrun-archive</id>
+            <phase>package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <zip basedir="target" destfile="target/javabot.zip" includes="${project.build.finalName}.${project.packaging} libs/*" />
+              </target>
             </configuration>
           </execution>
         </executions>
