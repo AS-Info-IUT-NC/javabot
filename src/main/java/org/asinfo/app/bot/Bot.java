@@ -24,6 +24,8 @@ public class Bot extends ListenerAdapter {
         String message = event.getMessage().getContentRaw();
         if (message.equals("!javabot")){
             event.getChannel().sendMessage("Hello c'est moi, Javabot !").queue();
+        } else if (message.equals("!projet")){
+            event.getChannel().sendMessage("Contribuez ici au projet :\nhttps://github.com/AS-Info-IUT-NC/javabot").queue();
         }
     }
 }
