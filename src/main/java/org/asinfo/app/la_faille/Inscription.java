@@ -7,7 +7,6 @@ import org.asinfo.app.la_faille.helpers.ConstantesLaFaille;
 import org.jetbrains.annotations.NotNull;
 
 import static org.asinfo.app.la_faille.helpers.MessagesLaFaille.*;
-import static org.asinfo.lib.discord.Messages.envoyerReponsePersoMessage;
 import static org.asinfo.lib.discord.Messages.messageValide;
 import static org.asinfo.lib.discord.Roles.*;
 

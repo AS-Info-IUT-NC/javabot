@@ -4,7 +4,8 @@
 
   <groupId>org.asinfo</groupId>
   <artifactId>javabot</artifactId>
-  <version>0.0.7_jar</version>
+  <version>0.0.90</version>
+  <packaging>war</packaging>
 
   <name>javabot</name>
 
@@ -13,13 +14,15 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
     <junit.jupiter.version>5.5.2</junit.jupiter.version>
+    <JDA.version>4.0.0_62</JDA.version>
+    <JDA-utilities.version>3.0.2</JDA-utilities.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>net.dv8tion</groupId>
       <artifactId>JDA</artifactId>
-      <version>4.0.0_62</version>
+      <version>${JDA.version}</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -30,9 +33,15 @@
     <dependency>
       <groupId>com.jagrosh</groupId>
       <artifactId>jda-utilities</artifactId>
-      <version>3.0.2</version>
+      <version>${JDA-utilities.version}</version>
       <scope>compile</scope>
       <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
@@ -47,73 +56,28 @@
   <build>
     <plugins>
       <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.2</version>
-      </plugin>
-      <plugin>
-        <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.3</version>
         <configuration>
+          <warName>${project.artifactId}-${project.version}</warName>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
           <archive>
             <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>libs/</classpathPrefix>
               <mainClass>org.asinfo.app.Main</mainClass>
+              <addClasspath>true</addClasspath>
             </manifest>
           </archive>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>
-                ${project.build.directory}/libs
-              </outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.8</version>
-        <executions>
-          <execution>
-            <id>antrun-archive</id>
-            <phase>package</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <zip basedir="target" destfile="target/javabot.zip" includes="${project.build.finalName}.${project.packaging} libs/*" />
-              </target>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
 
   <distributionManagement>
-  <repository>
-    <id>github</id>
-    <name>Versions</name>
-    <url>https://maven.pkg.github.com/AS-Info-IUT-NC/javabot</url>
-  </repository>
-</distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>Versions</name>
+      <url>https://maven.pkg.github.com/AS-Info-IUT-NC/javabot</url>
+    </repository>
+  </distributionManagement>
 </project>
