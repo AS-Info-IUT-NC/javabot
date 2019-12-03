@@ -70,6 +70,18 @@
           </archive>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <url>http://192.168.1.26:8080/manager/text</url>
+          <server>tomcat</server>
+          <path>/javabot</path>
+          <username>bava</username>
+          <password>${env.TOMCAT_PASSWORD}</password>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
