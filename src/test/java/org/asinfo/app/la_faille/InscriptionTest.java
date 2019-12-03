@@ -10,8 +10,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * todo javadoc
- * The type Inscription test.
+ * Test des inscriptions.
  */
 public class InscriptionTest {
 
