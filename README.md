@@ -44,7 +44,7 @@ Voir leur [documentation complète](https://junit.org/junit5/docs/current/user-g
 
 ### Tomcat
 
-[déploiement de l'app]
+L'app est hébergée sur un serveur Tomcat, via un Raspberry Pi 4.
 
 ## Environnement
 
@@ -61,9 +61,9 @@ Pour aller plus loin : [la documentation officielle](https://www.jetbrains.com/h
 
 Pour l'instant, seule l'API de Discord est utilisée, mais d'autres pourront servir à terme.
 
-- [API Discord](https://discordapp.com/developers/docs/intro)
+- [API Discord](https://discordapp.com/developers/docs/intro) ; il est nécessaire de créer un bot de test personnel pour l'environnement de développement. Le bot final répondra avec son propre token au moment du déploiement.
 
-Les clés des API et autres variables sensibles sont conservées dans `config.properties` ;
+Les clés des API et autres variables sensibles sont à ajouter dans des variables d'environnement.
 aucun code ou clé d'identification ne doit apparaître en clair dans le projet.
 
 ## Conventions
@@ -79,10 +79,12 @@ en ce qui concerne la mise en place des clés d'authentification. Les vidéos de
 
 Pour participer :
 
+**Première approche :** RDV dans le chan #javabot du discord pour qu'on en parle ;)
+
 - Consulter les [issues](https://github.com/B4va/javabot/issues) : Il est possible d'en créer ou de répondre aux issues déjà
 ouvertes, pour préciser un peu ce qui vous semblerait utile de modifier ou implémenter.
 - Les corrections/implémentations se feront alors via pull request, que chacun pourra
-consulter et commenter avant validation. Voir [ici](w) le fonctionnement.
+consulter et commenter avant validation. Voir [ici](https://github.com/AS-Info-IUT-NC/javabot/wiki) *(en construction)* le fonctionnement.
 - Dans le cas d'une plus ou moins grosse implémentation, il est possible de créer un [projet](https://github.com/B4va/javabot/projects)
 afin de travailler à plusieurs et de pouvoir s'organiser plus efficacement.
 - Respecter les [conventions](https://github.com/B4va/javabot/wiki) de nommage et d'organisation du projet.
