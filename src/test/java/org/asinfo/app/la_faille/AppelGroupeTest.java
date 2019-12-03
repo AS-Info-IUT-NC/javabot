@@ -2,6 +2,7 @@ package org.asinfo.app.la_faille;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import org.asinfo.app.Main;
 import org.junit.jupiter.api.Test;
 
 import javax.security.auth.login.LoginException;
@@ -10,13 +11,12 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * todo javadoc
- * The type Appel groupe test.
+ * Tests unitaires de la classe {@link AppelGroupe}.
  */
 public class AppelGroupeTest {
 
     /**
-     * Event test.
+     * Implémentation de la fonction.
      *
      * @throws IOException    the io exception
      * @throws LoginException the login exception

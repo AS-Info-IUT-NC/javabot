@@ -10,12 +10,12 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Test des inscriptions.
+ * Tests unitaires de la classe {@link Inscription}.
  */
 public class InscriptionTest {
 
     /**
-     * Event test.
+     * Implémentation de la fonction.
      *
      * @throws IOException    the io exception
      * @throws LoginException the login exception

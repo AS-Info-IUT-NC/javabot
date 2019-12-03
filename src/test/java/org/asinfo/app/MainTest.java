@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class MainTest {
 
     /**
-     * todo javadoc
      * Creation de l instance.
      *
      * @throws IOException    the io exception
