@@ -63,7 +63,7 @@ public class Roles {
      */
     public static boolean aLeRole(Member member, Role role) {
         boolean res = false;
-        if (!roleExiste(member.getGuild(), role)) return res;
+        if (!roleExiste(member.getGuild(), role)) return false;
         int index = member.getRoles().size();
         for (int i = 0; i < index; i++) {
             if (role == member.getRoles().get(i)) res = true;

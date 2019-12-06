@@ -17,7 +17,7 @@ public class Messages {
      * @return True si message valide (boolean)
      */
     public static boolean messageValide(Message message, String testString) {
-        return message.equals(testString);
+        return message.getContentRaw().equals(testString);
     }
 
     /**
@@ -29,7 +29,7 @@ public class Messages {
      * @return True si message valide (boolean)
      */
     public static boolean messageValide(Message message, String testString1, String testString2) {
-        return message.equals(testString1) || message.equals(testString2);
+        return message.getContentRaw().equals(testString1) || message.getContentRaw().equals(testString2);
     }
 
     /**
@@ -42,7 +42,7 @@ public class Messages {
     public static boolean messageValide(Message message, String[] testStrings) {
         boolean res = false;
         for (String s : testStrings) {
-            if (message.equals(s)) res = true;
+            if (message.getContentRaw().equals(s)) res = true;
             break;
         }
         return res;
