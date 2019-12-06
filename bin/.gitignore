@@ -1,0 +1,16 @@
+# Clés de configuration API
+config.properties
+
+# Build
+target
+
+# IDE
+.idea
+
+# Packages
+*.jar
+*.war
+*.ear
+
+# Doc
+doc

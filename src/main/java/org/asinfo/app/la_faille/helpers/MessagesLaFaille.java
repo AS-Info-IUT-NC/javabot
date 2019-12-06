@@ -3,13 +3,15 @@ package org.asinfo.app.la_faille.helpers;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import static org.asinfo.lib.discord.Messages.*;
+import static org.asinfo.lib.discord.Roles.getRoleAvecNom;
 import static org.asinfo.lib.discord.Roles.membresDe;
+import static org.asinfo.app.la_faille.helpers.ConstantesLaFaille.*;
 
 
 /**
  * Classe utilitaire pour le package la_faille ; messages du bot.
  */
-public class MessagesLaFaille implements ConstantesLaFaille {
+public class MessagesLaFaille {
 
     /**
      * Message de bienvenue.
@@ -17,7 +19,7 @@ public class MessagesLaFaille implements ConstantesLaFaille {
      * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
      */
     public static void bienvenueLaFaille(GuildMessageReceivedEvent event){
-        envoyerReponsePersoMessage(event, JOIN, "Bienvenue ! Tu es maintenant un chevalier de La Faille !");
+        envoyerMessagePerso(event.getAuthor(), event.getChannel(),"Bienvenue ! Tu es maintenant un chevalier de La Faille !");
     }
 
     /**
@@ -26,7 +28,7 @@ public class MessagesLaFaille implements ConstantesLaFaille {
      * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
      */
     public static void auRevoirLaFaille(GuildMessageReceivedEvent event){
-        envoyerReponsePersoMessage(event, QUIT, "Au revoir. La Faille n'est jamais loin.");
+        envoyerMessagePerso(event.getAuthor(), event.getChannel(),"Au revoir. La Faille n'est jamais loin.");
     }
 
     /**
@@ -36,7 +38,7 @@ public class MessagesLaFaille implements ConstantesLaFaille {
      */
     public static void appelerLaFaille(GuildMessageReceivedEvent event){
         String auteurMention = event.getAuthor().getName();
-        envoyerMessageGroupe(event, CALL,  auteurMention + " vous réclame !", membresDe(event, ROLE));
+        envoyerMessageGroupe(membresDe(event.getGuild(), getRoleAvecNom(event.getGuild(), ROLE)), event.getChannel(),  auteurMention + " vous réclame !");
     }
 
     /**
@@ -45,7 +47,7 @@ public class MessagesLaFaille implements ConstantesLaFaille {
      * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
      */
     public static void groupeVideLaFaille(GuildMessageReceivedEvent event){
-        envoyerReponseMessage(event, CALL, "Il n'y a personne dans la faille...");
+        envoyerMessage(event.getChannel(), "Il n'y a personne dans la faille...");
     }
 
     /**
@@ -54,7 +56,7 @@ public class MessagesLaFaille implements ConstantesLaFaille {
      * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
      */
     public static void dejaInscritLaFaille(GuildMessageReceivedEvent event){
-        envoyerReponsePersoMessage(event, JOIN, "Tu es déjà membre de la Faille ;)");
+        envoyerMessagePerso(event.getAuthor(), event.getChannel(),"Tu es déjà membre de la Faille ;)");
     }
 
     /**
@@ -63,6 +65,6 @@ public class MessagesLaFaille implements ConstantesLaFaille {
      * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
      */
     public static void dejaDesinscritLaFaille(GuildMessageReceivedEvent event){
-        envoyerReponsePersoMessage(event, QUIT, "Tu n'es DEJA pas un membre de la Faille...");
+        envoyerMessagePerso(event.getAuthor(), event.getChannel(),"Tu n'es DEJA pas un membre de la Faille...");
     }
 }

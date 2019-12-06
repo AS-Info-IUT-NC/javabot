@@ -1,9 +1,9 @@
 package org.asinfo.lib.discord;
 
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.events.guild.GenericGuildEvent;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.managers.GuildManager;
 
 /**
@@ -12,18 +12,17 @@ import net.dv8tion.jda.api.managers.GuildManager;
 public class Roles {
 
     /**
-     * Retourne l'objet Role associé à un nom de role.
+     * Retourne l'objet Role associé à un nom de role pour un serveur.
      *
-     * @param event Evénement (GenericGuildEvent)
+     * @param guild Serveur (Guild)
      * @param nom   Nom du role (String)
      * @return Objet lié au role (Role) ; null si aucun role correspondant
      */
-    public static Role getRoleAvecNom(GenericGuildEvent event, String nom){
-        int index = event.getGuild().getRoles().size();
+    public static Role getRoleAvecNom(Guild guild, String nom) {
+        int index = guild.getRoles().size();
         Role[] roles = new Role[index];
-        int finalIndex = -1;
         for (int i = 0; i < index; i++) {
-            roles[i] = event.getGuild().getRoles().get(i);
+            roles[i] = guild.getRoles().get(i);
             if (roles[i].getName().equals(nom)) {
                 return roles[i];
             }
@@ -32,79 +31,79 @@ public class Roles {
     }
 
     /**
-     * Ajoute un role à un membre du serveur à partir d'un message reçu.
+     * Ajoute un role à un membre du serveur.
      *
-     * @param event  Message sur un salon textuel (GuildMessageReceivedEvent)
-     * @param role   Role a ajouter (Role)
+     * @param member Utilisateur (Member)
+     * @param role  Role a ajouter (Role)
      */
-    public static void ajouterRoleA(GuildMessageReceivedEvent event, Role role){
-        GuildManager manager = event.getGuild().getManager();
-        if (event.getMember() != null) {
-            manager.getGuild().addRoleToMember(event.getMember(), role).queue();
-        }
+    public static void ajouterRoleA(Member member, Role role) {
+        if (!roleExiste(member.getGuild(), role)) return;
+        GuildManager manager = member.getGuild().getManager();
+        manager.getGuild().addRoleToMember(member, role).queue();
     }
 
     /**
-     * Retire un role à un membre du serveur à partir d'un message reçu.
+     * Retire un role à un membre du serveur.
      *
-     * @param event  Message sur un salon textuel (GuildMessageReceivedEvent)
-     * @param role   Role a retirer (Role)
+     * @param member Utilisateur (Member)
+     * @param role  Role a retirer (Role)
      */
-    public static void retirerRoleA(GuildMessageReceivedEvent event, Role role){
-        GuildManager manager = event.getGuild().getManager();
-        if (event.getMember() != null) {
-            manager.getGuild().removeRoleFromMember(event.getMember(), role).queue();
-        }
+    public static void retirerRoleA(Member member, Role role) {
+        if (!roleExiste(member.getGuild(), role)) return;
+        GuildManager manager = member.getGuild().getManager();
+        manager.getGuild().removeRoleFromMember(member, role).queue();
     }
 
     /**
-     * Teste si un utilisateur a le role spécifié, à partir d'un message reçu.
+     * Teste si un utilisateur a le role spécifié.
      *
-     * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
-     * @param role Role à tester (Role)
+     * @param member Utilisateur (Member)
+     * @param role  Role à tester (Role)
      * @return True si le membre a le role testé (boolean)
      */
-    public static boolean aLeRole(GuildMessageReceivedEvent event, Role role){
-        if (event.getMember() == null) return false;
-        int index = event.getMember().getRoles().size();
-        for (int i = 0 ; i < index ; i++){
-            if (role == event.getMember().getRoles().get(i)) return true;
+    public static boolean aLeRole(Member member, Role role) {
+        boolean res = false;
+        if (!roleExiste(member.getGuild(), role)) return res;
+        int index = member.getRoles().size();
+        for (int i = 0; i < index; i++) {
+            if (role == member.getRoles().get(i)) res = true;
+            break;
         }
-        return false;
+        return res;
     }
 
     /**
-     * Teste si un role existe sur le serveur à partir d'un message reçu.
+     * Teste si un role existe dans un serveur.
      *
-     * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
-     * @param role Nom du role à tester (String)
+     * @param guild Serveur (Guild)
+     * @param role  Nom du role à tester (Role)
      * @return True si le role existe (boolean)
      */
-    public static boolean roleExiste(GuildMessageReceivedEvent event, String role){
-        int index = event.getGuild().getRoles().size();
+    public static boolean roleExiste(Guild guild, Role role) {
+        boolean res = false;
+        int index = guild.getRoles().size();
         for (int i = 0; i < index; i++) {
-            if (event.getGuild().getRoles().get(i).getName().equals(role)){
-                return true;
+            if (guild.getRoles().get(i) == role) {
+                res = true;
             }
         }
-        return false;
+        return res;
     }
 
     /**
-     * Retourne les utilisateurs ayant un role particulier, à partir d'un message reçu.
+     * Retourne les utilisateurs ayant un role défini.
      *
-     * @param event Message sur un salon textuel (GuildMessageReceivedEvent)
-     * @param role Role ciblé (Role)
+     * @param guild Serveur (Guild)
+     * @param role  Role ciblé (Role)
      * @return Les utilisateurs ayant le role ciblé (User[])
      */
-    public static User[] membresDe(GuildMessageReceivedEvent event, String role){
-        if (!roleExiste(event, role)) return null;
-        Role r = getRoleAvecNom(event, role);
-        int index = event.getGuild().getMembersWithRoles(r).size();
+    public static User[] membresDe(Guild guild, Role role) {
+        if (!roleExiste(guild, role)) return null;
+        int index = guild.getMembersWithRoles(role).size();
         if (index == 0) return null;
         User[] users = new User[index];
-        for (int i = 0 ; i < index ; i++){
-            users[i] = event.getGuild().getMembersWithRoles(r).get(i).getUser();
+        for (int i = 0; i < index; i++) {
+            users[i] = guild.getMembersWithRoles(role).get(i).getUser();
         }
         return users;
     }
