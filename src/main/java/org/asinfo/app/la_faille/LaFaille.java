@@ -15,5 +15,6 @@ public class LaFaille {
     public LaFaille(JDA jda){
         jda.addEventListener(new Inscription());
         jda.addEventListener(new AppelGroupe());
+        jda.addEventListener(new SoundboardAOE());
     }
 }
